@@ -30,6 +30,8 @@ def comprar():
             if cantidad>=1 and cantidad<=3:
                 print(f"Cantidad de entradas seleccionadas {cantidad}")
                 break
+            else:
+                print("Solo puedes ingresar de 1 a 3 entradas")
         except:
             print("Solo puedes ocupar numeros en esta instancia")
     while compras<cantidad:
