@@ -72,8 +72,13 @@ def comprar():
 
 def mostrar_ubicaciones():
     print("Escenario")
+    contador=0
     for i in Entradas:
+        contador=contador+1
         print(i, end=" ")
+        if contador==10:
+            print("\n")
+            contador=0
 
 def asistentes():
     if Registro!=[]:
@@ -126,7 +131,7 @@ while True:
         case "4":
             ganancias()
         case "5":
-            print("""
+            print(f"""
             Finalizando programa...
             Benjamin Bello
             10/07/2023
