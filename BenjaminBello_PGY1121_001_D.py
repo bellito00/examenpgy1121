@@ -1,5 +1,6 @@
 from os import system
 system("cls")
+import time
 
 Entradas=["1","2","3","4","5","6","7","8","9","10",
           "11","12","13","14","15","16","17","18","19","20",
@@ -131,10 +132,11 @@ while True:
         case "4":
             ganancias()
         case "5":
+            hora=time.asctime()
             print(f"""
             Finalizando programa...
             Benjamin Bello
-            10/07/2023
+            {hora}
             """)
             break
         case other:
