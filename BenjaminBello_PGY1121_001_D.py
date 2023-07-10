@@ -23,52 +23,62 @@ Silver=[]
 Cantidad=[]
 
 def comprar():
-    mostrar_ubicaciones()
-    entrada=input("""
-    Selecciona mediante el numero, la ubicacion que deseas comprar:
-    (Si aparece una x significa que ese asiento ya esta comprado)
-
-    Platinum: 120.000 (Asientos del 1 al 20)
-    Gold: 80.000 (Asientos del 21 al 50)
-    Silver: 50.000 (Asientos 51 al 100)
-
-    """)
-    if entrada in Entradas:
-        print("Comprando asiento")
-        id_entrada=int(entrada)
-        Entradas[id_entrada-1]="X"
-        if id_entrada>0 and id_entrada<21:
-            tipo="Platinum"
-            valor=120000
-        elif id_entrada>20 and id_entrada<51:
-            tipo="Gold"
-            valor=80000
-        elif id_entrada>50 and id_entrada<101:
-            tipo="Silver"
-            valor=50000
-        while True:
-            rut=input("Ingresa tu rut: (formato: 21038810)")
-            if len(rut)==8 and rut.isnumeric():
-                print(f"Rut ingresado correctamente: {rut}")
+    compras=0
+    while True:
+        try:
+            cantidad=int(input("Ingresa cantidad de entradas a comprar: "))
+            if cantidad>=1 and cantidad<=3:
+                print(f"Cantidad de entradas seleccionadas {cantidad}")
                 break
-            else:
-                print("Ingresa correctamente el rut como se dice en el formato")
-        datos=rut,id_entrada,tipo
-        Total.append(valor)
-        Registro.append(datos)
-        Cantidad.append(1)
-        if tipo=="Platinum":
-            Platinum.append(1)
-            ValorPlat.append(valor)
-        elif tipo=="Gold":
-            Gold.append(1)
-            ValorGold.append(valor)
-        elif tipo=="Silver":
-            Silver.append(1)
-            ValorSilver.append(valor)
-        print(f"Asiento {id_entrada} del tipo {tipo} asignado correctamente al rut {rut}")
-    else:
-        print("No existe ninguno de los asientos que acabas de colocar o este no se encuentra disponible")
+        except:
+            print("Solo puedes ocupar numeros en esta instancia")
+    while compras<cantidad:
+        mostrar_ubicaciones()
+        entrada=input("""
+        Selecciona mediante el numero, la ubicacion que deseas comprar:
+        (Si aparece una x significa que ese asiento ya esta comprado)
+
+        Platinum: 120.000 (Asientos del 1 al 20)
+        Gold: 80.000 (Asientos del 21 al 50)
+        Silver: 50.000 (Asientos 51 al 100)
+
+        """)
+        if entrada in Entradas:
+            id_entrada=int(entrada)
+            Entradas[id_entrada-1]="X"
+            if id_entrada>0 and id_entrada<21:
+                tipo="Platinum"
+                valor=120000
+            elif id_entrada>20 and id_entrada<51:
+                tipo="Gold"
+                valor=80000
+            elif id_entrada>50 and id_entrada<101:
+                tipo="Silver"
+                valor=50000
+            while True:
+                rut=input("Ingresa tu rut: (formato: 21038810)")
+                if len(rut)==8 and rut.isnumeric():
+                    print(f"Rut ingresado correctamente: {rut}")
+                    break
+                else:
+                    print("Ingresa correctamente el rut como se dice en el formato")
+            datos=rut,id_entrada,tipo
+            Total.append(valor)
+            Registro.append(datos)
+            Cantidad.append(1)
+            if tipo=="Platinum":
+                Platinum.append(1)
+                ValorPlat.append(valor)
+            elif tipo=="Gold":
+                Gold.append(1)
+                ValorGold.append(valor)
+            elif tipo=="Silver":
+                Silver.append(1)
+                ValorSilver.append(valor)
+            print(f"Asiento {id_entrada} del tipo {tipo} asignado correctamente al rut {rut}")
+            compras=compras+1
+        else:
+            print("No existe ninguno de los asientos que acabas de colocar o este no se encuentra disponible")
 
 
 def mostrar_ubicaciones():
